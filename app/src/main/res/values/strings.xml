@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Event Planner</string>
+    <string name="event_planner">Event Planner</string>
+    <string name="event_naming">Событие</string>
+    <string name="date_of_event">Дата события</string>
+    <string name="time_of_event">Время события</string>
+    <string name="description_of_event">Описание события</string>
+    <string name="in_current_process">В процессе</string>
+    <string name="check_as_visited">Пометить как посещенное</string>
+    <string name="check_as_skipped">Пометить как пропущенное</string>
+    <string name="approve_changes">Принять изменения</string>
+    <string name="escape_without_changes">Выйти без именений</string>
+    <string name="delete_event">Удалить событие</string>
 </resources>
