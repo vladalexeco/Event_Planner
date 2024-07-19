@@ -54,6 +54,10 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.gson)
 
+    //dagger
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
+
     //room
     ksp(libs.androidx.room.compiler)
     annotationProcessor(libs.androidx.room.compiler)
@@ -63,9 +67,6 @@ dependencies {
     //viewmodel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.activity.ktx)
-
-    //koin
-    implementation(libs.koin.android)
 
     //navigation
     implementation(libs.androidx.navigation.fragment.ktx)
