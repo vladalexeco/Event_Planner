@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="180dp">
+    android:layout_height="196dp">
 
     <FrameLayout
         android:id="@+id/eventCardMainFrameFrameLayout"
@@ -127,6 +127,27 @@
         app:layout_constraintStart_toStartOf="@+id/eventCardForecastImageImageView"
         app:layout_constraintTop_toBottomOf="@+id/eventCardForecastImageImageView"
         tools:text="+15 C облачно" />
+
+    <TextView
+        android:id="@+id/eventCardLocationHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Место:"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/eventCardTimeHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/eventCardTimeHeaderTextView" />
+
+    <TextView
+        android:id="@+id/eventCardLocationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginStart="4dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/eventCardLocationHeaderTextView"
+        app:layout_constraintTop_toTopOf="@+id/eventCardLocationHeaderTextView"
+        tools:text="Санкт-Петербург, \n Парголово" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -30,4 +30,8 @@ class EventListFragment : Fragment() {
             findNavController().navigate(R.id.action_eventListFragment_to_eventEditFragment)
         }
     }
+
+    companion object {
+        const val EVENT_ID_KEY = "event_id_key"
+    }
 }
