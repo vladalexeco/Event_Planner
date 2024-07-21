@@ -5,21 +5,24 @@
     <string name="date_of_event">Дата события</string>
     <string name="time_of_event">Время события</string>
     <string name="description_of_event">Описание события</string>
-    <string name="in_current_process">В процессе</string>
-    <string name="check_as_visited">Пометить как посещенное</string>
-    <string name="check_as_skipped">Пометить как пропущенное</string>
+    <string name="in_current_process">в процессе</string>
+    <string name="check_as_visited">посещенное</string>
+    <string name="check_as_skipped">пропущенное</string>
     <string name="approve_changes">Принять изменения</string>
     <string name="escape_without_changes">Выйти без именений</string>
     <string name="delete_event">Удалить событие</string>
     <string name="edit_event_screen_header">Редактирование события</string>
     <string name="new_event_screen_header">Новое событие</string>
+    <string name="edit_event_button">Изменить событие</string>
     <string name="enter_new_event_hint">Введите наименование события</string>
     <string name="date_choice_underlined">Нажмите для выбора даты</string>
     <string name="time_choice_underlined">Нажмите для выбора времени</string>
     <string name="enter_description_hint">Введите описание события</string>
     <string name="create_event_button">Создать событие</string>
     <string name="escape_from_screen_button">Выйти</string>
+    <string name="escape_without_changes_from_screen_button">Выйти без изменений</string>
     <string name="invalid_assigned_date_time_toast_message">Пожалуйста, выберете дату и время, не из прошлого</string>
     <string name="event_name_field_is_blank_toast_message">Пожалуйста, заполните поля с наименованием и местом встречи</string>
     <string name="error_date_time_parsing">Ошибка в формате даты/времени</string>
+    <string name="location_header">Место события</string>
 </resources>

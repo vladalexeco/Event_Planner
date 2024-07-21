@@ -38,6 +38,7 @@ class EventAdapter(
     }
 
     fun setNewData(newEventList: List<Event>) {
+        events.clear()
         events.addAll(newEventList)
         notifyDataSetChanged()
     }
