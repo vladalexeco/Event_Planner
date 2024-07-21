@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_eventDetailsFragment_to_eventEditFragment"
             app:destination="@id/eventEditFragment" />
+        <action
+            android:id="@+id/action_eventDetailsFragment_to_eventListFragment"
+            app:destination="@id/eventListFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventEditFragment"

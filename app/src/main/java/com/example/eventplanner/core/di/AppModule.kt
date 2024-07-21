@@ -22,11 +22,13 @@ class AppModule(val context: Context) {
     @Provides
     fun provideEventEditViewModelFactory(
         insertEventToDatabaseUseCase: InsertEventToDatabaseUseCase,
-        deleteEventByIdFromDatabaseUseCase: DeleteEventByIdFromDatabaseUseCase
+        deleteEventByIdFromDatabaseUseCase: DeleteEventByIdFromDatabaseUseCase,
+        getEventByIdFromDatabaseUseCase: GetEventByIdFromDatabaseUseCase
     ): EventEditViewModelFactory {
         return EventEditViewModelFactory(
             insertEventToDatabaseUseCase = insertEventToDatabaseUseCase,
-            deleteEventByIdFromDatabaseUseCase = deleteEventByIdFromDatabaseUseCase
+            deleteEventByIdFromDatabaseUseCase = deleteEventByIdFromDatabaseUseCase,
+            getEventByIdFromDatabaseUseCase = getEventByIdFromDatabaseUseCase
         )
     }
 

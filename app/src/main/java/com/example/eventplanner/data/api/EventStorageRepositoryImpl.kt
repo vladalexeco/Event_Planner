@@ -29,6 +29,6 @@ class EventStorageRepositoryImpl(
     }
 
     override suspend fun deleteEventById(eventId: String) {
-        appDatabase.getEventDao().getEventById(eventId)
+        appDatabase.getEventDao().deleteById(eventId)
     }
 }

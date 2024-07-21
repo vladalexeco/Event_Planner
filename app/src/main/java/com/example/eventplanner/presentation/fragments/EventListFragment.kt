@@ -94,7 +94,9 @@ class EventListFragment : Fragment() {
     }
 
     private fun handleOnItemClick(eventId: String) {
-
+        val bundle = Bundle()
+        bundle.putString(EVENT_ID_KEY, eventId)
+        findNavController().navigate(R.id.action_eventListFragment_to_eventDetailsFragment, bundle)
     }
 
     companion object {
