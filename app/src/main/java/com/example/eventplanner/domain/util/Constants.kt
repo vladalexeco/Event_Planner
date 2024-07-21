@@ -1,3 +1,3 @@
 package com.example.eventplanner.domain.util
 
-const val UNSIGNED_EVENT_ID = -1
+const val BASE_URL = "https://api.weatherapi.com/v1/"

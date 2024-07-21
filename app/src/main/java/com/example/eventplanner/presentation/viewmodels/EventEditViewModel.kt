@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.eventplanner.domain.models.Event
 import com.example.eventplanner.domain.usecases.DeleteEventByIdFromDatabaseUseCase
 import com.example.eventplanner.domain.usecases.GetEventByIdFromDatabaseUseCase
+import com.example.eventplanner.domain.usecases.GetForecastUseCase
 import com.example.eventplanner.domain.usecases.InsertEventToDatabaseUseCase
 import com.example.eventplanner.presentation.states.EventEditEvent
 import com.example.eventplanner.presentation.states.EventEditScreenState
@@ -16,7 +17,8 @@ import kotlinx.coroutines.launch
 class EventEditViewModel(
     private val insertEventToDatabaseUseCase: InsertEventToDatabaseUseCase,
     private val deleteEventByIdFromDatabaseUseCase: DeleteEventByIdFromDatabaseUseCase,
-    private val getEventByIdFromDatabaseUseCase: GetEventByIdFromDatabaseUseCase
+    private val getEventByIdFromDatabaseUseCase: GetEventByIdFromDatabaseUseCase,
+    private val getForecastUseCase: GetForecastUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData(EventEditScreenState())
@@ -46,6 +48,7 @@ class EventEditViewModel(
 
     private fun saveEventToDatabase(event: Event) {
         viewModelScope.launch {
+
             insertEventToDatabaseUseCase(event)
         }
     }
