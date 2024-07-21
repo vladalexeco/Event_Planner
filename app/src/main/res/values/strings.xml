@@ -20,6 +20,6 @@
     <string name="create_event_button">Создать событие</string>
     <string name="escape_from_screen_button">Выйти</string>
     <string name="invalid_assigned_date_time_toast_message">Пожалуйста, выберете дату и время, не из прошлого</string>
-    <string name="event_name_field_is_blank_toast_message">Поля с наименованием события, а также широта и долгота являются обязательными для заполнения</string>
+    <string name="event_name_field_is_blank_toast_message">Пожалуйста, заполните поля с наименованием и местом встречи</string>
     <string name="error_date_time_parsing">Ошибка в формате даты/времени</string>
 </resources>

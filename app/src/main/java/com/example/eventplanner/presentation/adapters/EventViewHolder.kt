@@ -13,12 +13,12 @@ class EventViewHolder(
     fun bind(model: Event) {
         binding.eventCardEventNameTextView.text = model.name
         binding.eventCardEventDateTextView.text = model.date
-        binding.eventCardEventTimeTextView.text = model.date
+        binding.eventCardEventTimeTextView.text = model.time
         binding.eventCardEventStatusTextView.text = model.status
 
         binding.eventCardForecastConditionsTextView.text = model.forecast ?: "Unknown"
 
-        binding.eventCardLocationTextView.text = model.district ?: "${model.latitude} ${model.longitude}"
+        binding.eventCardLocationTextView.text = model.location
 
         if (model.forecastImageUrl != null) {
              Picasso.get()

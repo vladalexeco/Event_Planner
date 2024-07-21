@@ -1,6 +1,7 @@
 package com.example.eventplanner.presentation.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,11 @@ class EventAdapter(
         }
     }
 
+    fun setNewData(newEventList: List<Event>) {
+        events.addAll(newEventList)
+        notifyDataSetChanged()
+    }
+
     private fun showPopupMenu(
         itemId: String,
         view: View,
@@ -47,5 +53,6 @@ class EventAdapter(
             onItemClick(itemId, menuItem.itemId)
             true
         }
+        popup.show()
     }
 }

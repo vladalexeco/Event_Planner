@@ -12,18 +12,36 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.eventplanner.R
+import com.example.eventplanner.core.App
 import com.example.eventplanner.databinding.FragmentEventEditBinding
+import com.example.eventplanner.domain.models.Event
+import com.example.eventplanner.presentation.states.EventEditEvent
 import com.example.eventplanner.presentation.utils.CompareDateResult
+import com.example.eventplanner.presentation.viewmodels.EventEditViewModel
+import com.example.eventplanner.presentation.viewmodels.EventEditViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import javax.inject.Inject
 
 class EventEditFragment : Fragment() {
 
     private var _binding: FragmentEventEditBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var eventEditViewModelFactory: EventEditViewModelFactory
+    private lateinit var viewModel: EventEditViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().application as App).appComponent.inject(this)
+        viewModel = ViewModelProvider(this, eventEditViewModelFactory)[EventEditViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,35 +73,10 @@ class EventEditFragment : Fragment() {
         }
 
         binding.eventEditApproveButton.setOnClickListener {
-            when(val compareDateTimeResult = compareCurrentAndEnteredDate()) {
-                is CompareDateResult.Success -> {
-                    if (compareDateTimeResult.isValidDateTime) {
-                        if (binding.eventEditEditNameEditText.text.toString().isBlank() ||
-                            binding.eventEditLatitudeEditText.text.toString().isBlank() ||
-                            binding.eventEditLongitudeEditText.text.toString().isBlank()) {
-                            Toast.makeText(
-                                requireContext(),
-                                getString(R.string.event_name_field_is_blank_toast_message),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            Log.d("CHECK", "Saving event")
-                        }
-                    } else {
-                        Toast.makeText(
-                            requireContext(),
-                            getString(R.string.invalid_assigned_date_time_toast_message),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-                is CompareDateResult.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        compareDateTimeResult.errorMessage,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+            if (eventId != null) {
+                editEventAction()
+            } else {
+                saveNewEventAction()
             }
         }
         //
@@ -150,5 +143,59 @@ class EventEditFragment : Fragment() {
         } catch (e: Exception) {
             CompareDateResult.Error(errorMessage = getString(R.string.error_date_time_parsing))
         }
+    }
+
+    private fun saveNewEventAction() {
+        when(val compareDateTimeResult = compareCurrentAndEnteredDate()) {
+            is CompareDateResult.Success -> {
+                if (compareDateTimeResult.isValidDateTime) {
+                    if (binding.eventEditEditNameEditText.text.toString().isBlank() ||
+                        binding.eventEditLocationEditText.text.toString().isBlank()) {
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.event_name_field_is_blank_toast_message),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        saveNewEvent()
+                        findNavController().navigate(R.id.action_eventEditFragment_to_eventListFragment)
+                    }
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.invalid_assigned_date_time_toast_message),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            is CompareDateResult.Error -> {
+                Toast.makeText(
+                    requireContext(),
+                    compareDateTimeResult.errorMessage,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    private fun saveNewEvent() {
+        val newEvent = Event(
+            name = binding.eventEditEditNameEditText.text.toString(),
+            date = binding.eventEditEditDateTextView.text.toString(),
+            time = binding.eventEditEditTimeTextView.text.toString(),
+            description = binding.eventEditEditDescriptionEditText.text.toString(),
+            status = DEFAULT_STATUS,
+            location = binding.eventEditLocationEditText.text.toString()
+        )
+
+        viewModel.onEvent(EventEditEvent.SaveEventToDatabase(event = newEvent))
+    }
+
+    private fun editEventAction() {
+
+    }
+
+    companion object {
+        const val DEFAULT_STATUS = "в процессе"
     }
 }

@@ -18,7 +18,11 @@
         android:id="@+id/eventEditFragment"
         android:name="com.example.eventplanner.presentation.fragments.EventEditFragment"
         android:label="fragment_event_edit"
-        tools:layout="@layout/fragment_event_edit" />
+        tools:layout="@layout/fragment_event_edit" >
+        <action
+            android:id="@+id/action_eventEditFragment_to_eventListFragment"
+            app:destination="@id/eventListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventListFragment"
         android:name="com.example.eventplanner.presentation.fragments.EventListFragment"

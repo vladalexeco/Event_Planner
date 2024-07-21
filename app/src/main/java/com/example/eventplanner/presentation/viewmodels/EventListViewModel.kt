@@ -1,5 +1,6 @@
 package com.example.eventplanner.presentation.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,6 +31,7 @@ class EventListViewModel(
     private fun getAllEventsFromDatabase() {
         viewModelScope.launch {
             getAllEventsFromDatabaseUseCase().collect { events ->
+
                 val newScreenState = _uiState.value?.copy(eventList = events)
                 _uiState.value = newScreenState
             }
