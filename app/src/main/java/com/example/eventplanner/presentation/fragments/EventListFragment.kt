@@ -76,20 +76,6 @@ class EventListFragment : Fragment() {
         }
     }
 
-    private fun handleMenuItemClick(eventId: String, menuItemId: Int) {
-        when(menuItemId) {
-            R.id.action_assign_visited -> {
-
-            }
-            R.id.action_assign_skipped -> {
-
-            }
-            R.id.action_delete_card -> {
-
-            }
-        }
-    }
-
     private fun handleOnItemClick(eventId: String) {
         val bundle = Bundle()
         bundle.putString(EVENT_ID_KEY, eventId)
