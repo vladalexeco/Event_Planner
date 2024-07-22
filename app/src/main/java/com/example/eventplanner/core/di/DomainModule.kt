@@ -1,10 +1,12 @@
 package com.example.eventplanner.core.di
 
 import com.example.eventplanner.domain.api.EventStorageRepository
+import com.example.eventplanner.domain.api.ForecastRepository
 import com.example.eventplanner.domain.usecases.DeleteEventByIdFromDatabaseUseCase
 import com.example.eventplanner.domain.usecases.DeleteEventFromDatabaseUseCase
 import com.example.eventplanner.domain.usecases.GetAllEventsFromDatabaseUseCase
 import com.example.eventplanner.domain.usecases.GetEventByIdFromDatabaseUseCase
+import com.example.eventplanner.domain.usecases.GetForecastUseCase
 import com.example.eventplanner.domain.usecases.InsertEventToDatabaseUseCase
 import dagger.Module
 import dagger.Provides
@@ -44,5 +46,12 @@ class DomainModule {
         eventStorageRepository: EventStorageRepository
     ): InsertEventToDatabaseUseCase {
         return InsertEventToDatabaseUseCase(eventStorageRepository)
+    }
+
+    @Provides
+    fun provideGetForecastUseCase(
+        forecastRepository: ForecastRepository
+    ): GetForecastUseCase {
+        return GetForecastUseCase(forecastRepository = forecastRepository)
     }
 }

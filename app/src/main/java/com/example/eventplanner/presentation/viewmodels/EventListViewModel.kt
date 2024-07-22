@@ -10,6 +10,7 @@ import com.example.eventplanner.domain.usecases.GetAllEventsFromDatabaseUseCase
 import com.example.eventplanner.domain.usecases.GetEventByIdFromDatabaseUseCase
 import com.example.eventplanner.presentation.states.EventListEvent
 import com.example.eventplanner.presentation.states.EventListScreenState
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class EventListViewModel(

@@ -5,6 +5,7 @@ import com.example.eventplanner.domain.usecases.DeleteEventByIdFromDatabaseUseCa
 import com.example.eventplanner.domain.usecases.DeleteEventFromDatabaseUseCase
 import com.example.eventplanner.domain.usecases.GetAllEventsFromDatabaseUseCase
 import com.example.eventplanner.domain.usecases.GetEventByIdFromDatabaseUseCase
+import com.example.eventplanner.domain.usecases.GetForecastUseCase
 import com.example.eventplanner.domain.usecases.InsertEventToDatabaseUseCase
 import com.example.eventplanner.presentation.viewmodels.EventDetailsViewModelFactory
 import com.example.eventplanner.presentation.viewmodels.EventEditViewModelFactory
@@ -23,12 +24,14 @@ class AppModule(val context: Context) {
     fun provideEventEditViewModelFactory(
         insertEventToDatabaseUseCase: InsertEventToDatabaseUseCase,
         deleteEventByIdFromDatabaseUseCase: DeleteEventByIdFromDatabaseUseCase,
-        getEventByIdFromDatabaseUseCase: GetEventByIdFromDatabaseUseCase
+        getEventByIdFromDatabaseUseCase: GetEventByIdFromDatabaseUseCase,
+        getForecastUseCase: GetForecastUseCase
     ): EventEditViewModelFactory {
         return EventEditViewModelFactory(
             insertEventToDatabaseUseCase = insertEventToDatabaseUseCase,
             deleteEventByIdFromDatabaseUseCase = deleteEventByIdFromDatabaseUseCase,
-            getEventByIdFromDatabaseUseCase = getEventByIdFromDatabaseUseCase
+            getEventByIdFromDatabaseUseCase = getEventByIdFromDatabaseUseCase,
+            getForecastUseCase = getForecastUseCase
         )
     }
 
