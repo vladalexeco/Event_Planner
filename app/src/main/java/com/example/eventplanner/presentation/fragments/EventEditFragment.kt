@@ -102,6 +102,10 @@ class EventEditFragment : Fragment() {
             if (screenState.event != null) {
                 renderScreenForEditEvent(screenState.event)
             }
+
+            if (screenState.goToScreen) {
+                findNavController().navigate(R.id.action_eventEditFragment_to_eventListFragment)
+            }
         }
     }
 
@@ -228,7 +232,6 @@ class EventEditFragment : Fragment() {
                         } else {
                             saveEvent()
                         }
-                        findNavController().navigate(R.id.action_eventEditFragment_to_eventListFragment)
                     }
                 } else {
                     Toast.makeText(
