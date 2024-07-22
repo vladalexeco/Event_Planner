@@ -5,5 +5,5 @@ import com.example.eventplanner.domain.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface ForecastRepository {
-    suspend fun getWeatherForecast(location: String): Flow<Resource<WeatherData>>
+    suspend fun getWeatherForecast(location: String, days: Int): Flow<Resource<WeatherData>>
 }

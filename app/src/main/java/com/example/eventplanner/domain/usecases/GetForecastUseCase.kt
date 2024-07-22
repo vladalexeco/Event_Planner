@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 class GetForecastUseCase(
     private val forecastRepository: ForecastRepository
 ) {
-    suspend operator fun invoke(location: String): Flow<Resource<WeatherData>> {
-        return forecastRepository.getWeatherForecast(location = location)
+    suspend operator fun invoke(location: String, days: Int): Flow<Resource<WeatherData>> {
+        return forecastRepository.getWeatherForecast(location = location, days = days)
     }
 }

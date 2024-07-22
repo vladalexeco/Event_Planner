@@ -11,14 +11,19 @@ class NetworkWeatherClientImpl(
     override suspend fun doRequest(dto: Request): Response {
         return withContext(Dispatchers.IO) {
             when(dto) {
-                is Request.WeatherRequest -> getWeatherForecast(dto.location)
+                is Request.WeatherRequest -> {
+                    getWeatherForecast(
+                        location = dto.location,
+                        days = dto.days
+                    )
+                }
             }
         }
     }
 
-    private suspend fun getWeatherForecast(location: String): Response {
+    private suspend fun getWeatherForecast(location: String, days: Int): Response {
         return try {
-            weatherApiService.getWeather(location = location, days = 14)
+            weatherApiService.getWeather(location = location, days = days)
         } catch (exception: Exception) {
             throw exception
         }

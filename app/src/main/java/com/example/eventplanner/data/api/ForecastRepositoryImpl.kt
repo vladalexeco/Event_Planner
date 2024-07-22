@@ -14,9 +14,9 @@ import kotlinx.coroutines.flow.flow
 class ForecastRepositoryImpl(
     private val networkWeatherClient: NetworkWeatherClient
 ) : ForecastRepository {
-    override suspend fun getWeatherForecast(location: String): Flow<Resource<WeatherData>> = flow {
+    override suspend fun getWeatherForecast(location: String, days: Int): Flow<Resource<WeatherData>> = flow {
         try {
-            val response = networkWeatherClient.doRequest(Request.WeatherRequest(location = location))
+            val response = networkWeatherClient.doRequest(Request.WeatherRequest(location = location, days = days))
             val weatherData = WeatherData(
                 currentWeather = (response as WeatherResponse).current.toCurrentWeather(),
                 forecast = (response as WeatherResponse).forecast.toForecast()

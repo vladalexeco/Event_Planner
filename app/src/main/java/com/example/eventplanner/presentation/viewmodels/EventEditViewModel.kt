@@ -1,6 +1,8 @@
 package com.example.eventplanner.presentation.viewmodels
 
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +16,9 @@ import com.example.eventplanner.domain.util.Resource
 import com.example.eventplanner.presentation.states.EventEditEvent
 import com.example.eventplanner.presentation.states.EventEditScreenState
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 class EventEditViewModel(
     private val insertEventToDatabaseUseCase: InsertEventToDatabaseUseCase,
@@ -49,7 +54,7 @@ class EventEditViewModel(
 
     private fun saveEventToDatabase(event: Event) {
         viewModelScope.launch {
-            getForecastUseCase(location = "Москва").collect {
+            getForecastUseCase(location = "Москва", days = 0).collect {
                 val weatherDataResource = it
 
                 when(weatherDataResource) {
@@ -63,6 +68,16 @@ class EventEditViewModel(
             }
 //            insertEventToDatabaseUseCase(event)
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getDaysBetween(event: Event): Int {
+        val requiredDate = event.date
+        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
+        val targetDate = LocalDate.parse(requiredDate, formatter)
+        val currentDate = LocalDate.now()
+        val daysBetween = ChronoUnit.DAYS.between(currentDate, targetDate).toInt()
+        return daysBetween
     }
 
     private fun getEventFromDatabase(eventId: String) {
