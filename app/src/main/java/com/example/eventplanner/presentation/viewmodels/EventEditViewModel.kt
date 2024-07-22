@@ -1,8 +1,6 @@
 package com.example.eventplanner.presentation.viewmodels
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,12 +16,8 @@ import com.example.eventplanner.presentation.states.EventEditEvent
 import com.example.eventplanner.presentation.states.EventEditScreenState
 import com.example.eventplanner.presentation.utils.getDaysBetween
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoUnit
 
 class EventEditViewModel(
     private val insertEventToDatabaseUseCase: InsertEventToDatabaseUseCase,
@@ -103,7 +97,10 @@ class EventEditViewModel(
                         withContext(Dispatchers.IO) {
                             insertEventToDatabaseUseCase(event)
                         }
-                        _uiState.value = EventEditScreenState(goToScreen = true)
+                        _uiState.value = EventEditScreenState(
+                            goToScreen = true,
+                            toastMessage = weatherDataResource.networkError
+                        )
                     }
                 }
             }
@@ -115,8 +112,11 @@ class EventEditViewModel(
         val dateList = event.date.split(".")
         val compareDate = "${dateList[2]}-${dateList[1]}-${dateList[0]}"
         val forecastDay = forecastList?.find { it.date == compareDate }
-        val eventForecast = "Temp ${forecastDay?.day?.avgTempC}"
-        val eventForecastExtend = "Extend Temp ${forecastDay?.day?.avgTempC}"
+        val eventForecast = "${forecastDay?.day?.avgTempC} °C"
+        val eventForecastExtend = "Температура ${forecastDay?.day?.minTempC} - ${forecastDay?.day?.maxTempC} °C" +
+                ", влажность ${forecastDay?.day?.avgHumidity} %, скорость ветра ${forecastDay?.day?.maxWindKph} Км/ч " +
+                ", видимость ${forecastDay?.day?.avgVisKm} км, восход солнца ${forecastDay?.astro?.sunrise}, " +
+                "заход солнца ${forecastDay?.astro?.sunset}"
         val imageUrl = forecastDay?.day?.condition?.icon
         val modifiedEvent = event.copy(
             forecast = eventForecast,

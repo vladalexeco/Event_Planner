@@ -104,6 +104,10 @@ class EventEditFragment : Fragment() {
                 renderScreenForEditEvent(screenState.event)
             }
 
+            if (screenState.toastMessage != null) {
+                Toast.makeText(requireContext(), screenState.toastMessage, Toast.LENGTH_SHORT).show()
+            }
+
             if (screenState.goToScreen) {
                 findNavController().navigate(R.id.action_eventEditFragment_to_eventListFragment)
             }

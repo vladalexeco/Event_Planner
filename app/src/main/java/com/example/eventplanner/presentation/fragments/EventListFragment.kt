@@ -52,9 +52,6 @@ class EventListFragment : Fragment() {
             onItemClick = { eventId ->
                 handleOnItemClick(eventId)
             },
-            onItemMenuClick = { eventId, menuItemId ->
-                handleMenuItemClick(eventId = eventId, menuItemId = menuItemId)
-            }
         )
 
         binding.eventListListOfEventsRecycleView.apply {

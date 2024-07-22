@@ -73,6 +73,7 @@ class EventDetailsFragment : Fragment() {
             binding.eventDetailsDateTextView.text = event.date
             binding.eventDetailsTimeTextView.text = event.time
             binding.eventDetailsLocationTextView.text = event.location
+            binding.eventDetailsDescriptionTextView.text = event.description
 
             if (event.forecastImageUrl != null) {
                 Picasso.get()
@@ -84,7 +85,7 @@ class EventDetailsFragment : Fragment() {
                 binding.eventDetailsForecastImageImageView.setImageResource(R.drawable.unknown_forecast)
             }
 
-            binding.eventDetailsForecastConditionTextView.text = event.forecastExtend ?: "Unknown"
+            binding.eventDetailsForecastConditionTextView.text = event.forecastExtend ?: getString(R.string.unknown_forecast)
         }
     }
 

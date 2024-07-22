@@ -20,7 +20,7 @@
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="24dp"
-            android:textSize="24sp"/>
+            android:textSize="20sp"/>
 
     </FrameLayout>
 
@@ -77,7 +77,7 @@
         android:id="@+id/eventDetailsDescriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Юбилей. Купить хороший подарок"
+        tools:text="Юбилей. Купить хороший подарок"
         android:textSize="18sp"/>
 
     <TextView
@@ -103,17 +103,18 @@
 
     <ImageView
         android:id="@+id/eventDetailsForecastImageImageView"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:contentDescription="@null"
-        app:tint="@color/skyBlue"
         android:src="@drawable/cloud_icon"/>
 
     <TextView
         android:id="@+id/eventDetailsForecastConditionTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+15 C Пасмурно"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        tools:text="+15 C Пасмурно"
         android:textSize="18sp"/>
 
     <FrameLayout
@@ -121,17 +122,23 @@
         android:layout_height="0dp"
         android:layout_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/eventDetailsApproveButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/mildGreen"
+        android:layout_height="56dp"
         android:layout_marginHorizontal="16dp"
         android:text="OK"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/eventDetailsEditButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/skyBlue"
+        android:layout_height="56dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
         android:text="Редактировать"/>
