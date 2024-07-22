@@ -5,7 +5,7 @@ data class Day(
     val minTempC: Double,
     val avgTempC: Double,
     val maxWindKph: Double,
-    val avgVisKm: Int,
+    val avgVisKm: Double,
     val avgHumidity: Int,
     val dailyChanceOfRain: Int,
     val dailyChanceOfSnow: Int,

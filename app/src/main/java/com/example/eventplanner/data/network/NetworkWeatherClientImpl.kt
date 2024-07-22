@@ -16,7 +16,7 @@ class NetworkWeatherClientImpl(
         }
     }
 
-    private fun getWeatherForecast(location: String): Response {
+    private suspend fun getWeatherForecast(location: String): Response {
         return try {
             weatherApiService.getWeather(location = location, days = 14)
         } catch (exception: Exception) {

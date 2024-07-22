@@ -7,7 +7,7 @@ data class DayDto(
     val mintemp_c: Double,
     val avgtemp_c: Double,
     val maxwind_kph: Double,
-    val avgvis_km: Int,
+    val avgvis_km: Double,
     val avghumidity: Int,
     val daily_chance_of_rain: Int,
     val daily_chance_of_snow: Int,

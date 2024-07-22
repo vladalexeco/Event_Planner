@@ -10,6 +10,7 @@ import com.example.eventplanner.domain.usecases.DeleteEventByIdFromDatabaseUseCa
 import com.example.eventplanner.domain.usecases.GetEventByIdFromDatabaseUseCase
 import com.example.eventplanner.domain.usecases.GetForecastUseCase
 import com.example.eventplanner.domain.usecases.InsertEventToDatabaseUseCase
+import com.example.eventplanner.domain.util.Resource
 import com.example.eventplanner.presentation.states.EventEditEvent
 import com.example.eventplanner.presentation.states.EventEditScreenState
 import kotlinx.coroutines.launch
@@ -48,8 +49,19 @@ class EventEditViewModel(
 
     private fun saveEventToDatabase(event: Event) {
         viewModelScope.launch {
+            getForecastUseCase(location = "Москва").collect {
+                val weatherDataResource = it
 
-            insertEventToDatabaseUseCase(event)
+                when(weatherDataResource) {
+                    is Resource.Success -> {
+                        Log.d("WEATHER", weatherDataResource.data.toString())
+                    }
+                    is Resource.Error -> {
+                        Log.d("WEATHER", weatherDataResource.networkError.toString())
+                    }
+                }
+            }
+//            insertEventToDatabaseUseCase(event)
         }
     }
 
