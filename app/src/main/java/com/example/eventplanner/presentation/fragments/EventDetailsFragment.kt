@@ -73,7 +73,7 @@ class EventDetailsFragment : Fragment() {
             binding.eventDetailsDateTextView.text = event.date
             binding.eventDetailsTimeTextView.text = event.time
             binding.eventDetailsLocationTextView.text = event.location
-            binding.eventDetailsDescriptionTextView.text = event.description
+            binding.eventDetailsDescriptionTextView.text = if(event.description.isBlank()) "Нет описания" else event.description
 
             if (event.forecastImageUrl != null) {
                 Picasso.get()
