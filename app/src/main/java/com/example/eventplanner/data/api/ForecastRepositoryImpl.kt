@@ -18,7 +18,6 @@ class ForecastRepositoryImpl(
         try {
             val response = networkWeatherClient.doRequest(Request.WeatherRequest(location = location, days = days))
             val weatherData = WeatherData(
-                currentWeather = (response as WeatherResponse).current.toCurrentWeather(),
                 forecast = (response as WeatherResponse).forecast.toForecast()
             )
             emit(Resource.Success(data = weatherData))

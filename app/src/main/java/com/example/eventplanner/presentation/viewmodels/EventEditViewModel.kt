@@ -53,8 +53,11 @@ class EventEditViewModel(
     }
 
     private fun saveEventToDatabase(event: Event) {
+        val dayBetween = getDaysBetween(event = event)
+        val location = handleLocation(event = event)
+
         viewModelScope.launch {
-            getForecastUseCase(location = "Москва", days = 0).collect {
+            getForecastUseCase(location = location, days = dayBetween).collect {
                 val weatherDataResource = it
 
                 when(weatherDataResource) {
@@ -70,14 +73,25 @@ class EventEditViewModel(
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun getDaysBetween(event: Event): Int {
         val requiredDate = event.date
         val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
         val targetDate = LocalDate.parse(requiredDate, formatter)
         val currentDate = LocalDate.now()
-        val daysBetween = ChronoUnit.DAYS.between(currentDate, targetDate).toInt()
+        val daysBetween = ChronoUnit.DAYS.between(currentDate, targetDate).toInt() + 1
         return daysBetween
+    }
+
+    private fun handleLocation(event: Event): String {
+        var location = event.location
+        val separators = listOf(" ", ",", ";", ":")
+        separators.forEach { separator ->
+            if (location.contains(separator)) {
+                location = location.split(separator)[0]
+                return location
+            }
+        }
+        return location
     }
 
     private fun getEventFromDatabase(eventId: String) {
