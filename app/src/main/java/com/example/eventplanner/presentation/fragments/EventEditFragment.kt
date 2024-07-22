@@ -21,6 +21,7 @@ import com.example.eventplanner.databinding.FragmentEventEditBinding
 import com.example.eventplanner.domain.models.Event
 import com.example.eventplanner.presentation.states.EventEditEvent
 import com.example.eventplanner.presentation.utils.CompareDateResult
+import com.example.eventplanner.presentation.utils.getDaysBetween
 import com.example.eventplanner.presentation.viewmodels.EventEditViewModel
 import com.example.eventplanner.presentation.viewmodels.EventEditViewModelFactory
 import java.text.SimpleDateFormat
@@ -227,10 +228,14 @@ class EventEditFragment : Fragment() {
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
-                        if (eventId != null) {
-                            editEvent()
+                        if (getDaysBetween(binding.eventEditEditDateTextView.text.toString()) < 14) {
+                            if (eventId != null) {
+                                editEvent()
+                            } else {
+                                saveEvent()
+                            }
                         } else {
-                            saveEvent()
+                            showDaysBetweenAlert()
                         }
                     }
                 } else {
@@ -286,6 +291,22 @@ class EventEditFragment : Fragment() {
         builder.setPositiveButton("Да") { _, _ ->
             viewModel.onEvent(eventEditEvent = EventEditEvent.DeleteEventByIdFromDatabase(eventId = eventId!!))
             findNavController().navigate(R.id.action_eventEditFragment_to_eventListFragment)
+        }
+        builder.setNegativeButton("Нет") { _, _ ->
+        }
+        builder.show()
+    }
+
+    private fun showDaysBetweenAlert() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Предупреждение")
+        builder.setMessage("Прогноз дается только на 14 дней. Готовы сохранить событие без прогноза")
+        builder.setPositiveButton("Да") { _, _ ->
+            if (eventId != null) {
+                editEvent()
+            } else {
+                saveEvent()
+            }
         }
         builder.setNegativeButton("Нет") { _, _ ->
         }

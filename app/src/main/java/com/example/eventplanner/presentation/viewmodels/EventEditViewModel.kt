@@ -16,6 +16,7 @@ import com.example.eventplanner.domain.usecases.InsertEventToDatabaseUseCase
 import com.example.eventplanner.domain.util.Resource
 import com.example.eventplanner.presentation.states.EventEditEvent
 import com.example.eventplanner.presentation.states.EventEditScreenState
+import com.example.eventplanner.presentation.utils.getDaysBetween
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -68,15 +69,6 @@ class EventEditViewModel(
         }
     }
 
-    private fun getDaysBetween(event: Event): Int {
-        val requiredDate = event.date
-        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-        val targetDate = LocalDate.parse(requiredDate, formatter)
-        val currentDate = LocalDate.now()
-        val daysBetween = ChronoUnit.DAYS.between(currentDate, targetDate).toInt() + 1
-        return daysBetween
-    }
-
     private fun getEventFromDatabase(eventId: String) {
         viewModelScope.launch {
             val event = getEventByIdFromDatabaseUseCase(eventId)
@@ -92,7 +84,7 @@ class EventEditViewModel(
     }
 
     private fun saveEventToDatabase(event: Event) {
-        val dayBetween = getDaysBetween(event = event)
+        val dayBetween = getDaysBetween(eventDate = event.date)
         val location = handleLocation(event = event)
 
         viewModelScope.launch {
