@@ -1,7 +1,6 @@
 package com.example.eventplanner.data.api
 
 import com.example.eventplanner.data.network.NetworkWeatherClient
-import com.example.eventplanner.data.network.models.toCurrentWeather
 import com.example.eventplanner.data.network.models.toForecast
 import com.example.eventplanner.data.network.request.Request
 import com.example.eventplanner.data.network.response.WeatherResponse

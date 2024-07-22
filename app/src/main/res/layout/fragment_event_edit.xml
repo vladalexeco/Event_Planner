@@ -13,6 +13,16 @@
         android:layout_height="56dp"
         android:background="@color/mildGreen">
 
+        <ImageView
+            android:id="@+id/eventEditBackArrowImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/arrow_left"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical"
+            app:tint="@color/white"/>
+
         <TextView
             android:id="@+id/eventEditMainHeaderTextView"
             android:layout_width="wrap_content"
@@ -20,8 +30,8 @@
             tools:text="@string/edit_event_screen_header"
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="24dp"
-            android:textSize="24sp"/>
+            android:layout_marginStart="44dp"
+            android:textSize="20sp"/>
 
     </FrameLayout>
 
@@ -114,7 +124,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Место встречи"
+        android:text="@string/event_place_edit_screen_header"
         android:textSize="20sp"/>
 
     <androidx.cardview.widget.CardView
@@ -133,7 +143,7 @@
             android:textColor="@color/white"
             android:layout_marginVertical="8dp"
             android:textSize="18sp"
-            android:hint="Введите место встречи"
+            android:hint="@string/event_place_hint_edit_screen"
             android:gravity="top|start"
             android:layout_marginHorizontal="16dp" />
 
@@ -170,7 +180,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="1"/>
 
     <LinearLayout
@@ -182,7 +192,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/eventEditApproveButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginEnd="4dp"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -193,7 +203,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/eventEditEscapeButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_marginStart="4dp"
             android:textAllCaps="false"
             android:textColor="@color/white"
@@ -206,7 +216,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/eventEditDeleteEventButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
         android:textAllCaps="false"

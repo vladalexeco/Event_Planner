@@ -13,7 +13,6 @@ import com.example.eventplanner.domain.models.Event
 
 class EventAdapter(
     private val onItemClick: (String) -> Unit,
-    private val onItemMenuClick: (String, Int) -> Unit
 ) : RecyclerView.Adapter<EventViewHolder>() {
 
     private val events = ArrayList<Event>()
@@ -29,9 +28,6 @@ class EventAdapter(
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         holder.bind(events[position])
-        holder.binding.eventCardMenuButton.setOnClickListener {
-            showPopupMenu(events[position].id, holder.itemView, onItemMenuClick)
-        }
         holder.itemView.setOnClickListener {
             onItemClick(events[position].id)
         }
@@ -41,19 +37,5 @@ class EventAdapter(
         events.clear()
         events.addAll(newEventList)
         notifyDataSetChanged()
-    }
-
-    private fun showPopupMenu(
-        itemId: String,
-        view: View,
-        onItemClick: (itemId: String, actionId: Int) -> Unit
-    ) {
-        val popup = PopupMenu(view.context, view)
-        popup.menuInflater.inflate(R.menu.event_card_menu, popup.menu)
-        popup.setOnMenuItemClickListener { menuItem ->
-            onItemClick(itemId, menuItem.itemId)
-            true
-        }
-        popup.show()
     }
 }
