@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.eventplanner"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -34,10 +34,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-
     //core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -50,6 +53,10 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.gson)
 
+    //dagger
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
+
     //room
     ksp(libs.androidx.room.compiler)
     annotationProcessor(libs.androidx.room.compiler)
@@ -59,9 +66,6 @@ dependencies {
     //viewmodel
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.activity.ktx)
-
-    //koin
-    implementation(libs.koin.android)
 
     //navigation
     implementation(libs.androidx.navigation.fragment.ktx)

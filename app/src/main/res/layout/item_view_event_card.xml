@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="196dp">
+
+    <FrameLayout
+        android:id="@+id/eventCardMainFrameFrameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/card_view_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/eventCardEventNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="День рождения коллеги"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/eventCardDateHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Дата события:"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/eventCardEventNameTextView"
+        app:layout_constraintTop_toBottomOf="@id/eventCardEventNameTextView" />
+
+    <TextView
+        android:id="@+id/eventCardTimeHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Время события:"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/eventCardDateHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/eventCardDateHeaderTextView" />
+
+    <TextView
+        android:id="@+id/eventCardEventTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/eventCardTimeHeaderTextView"
+        app:layout_constraintTop_toTopOf="@+id/eventCardTimeHeaderTextView"
+        tools:text="16:45" />
+
+    <TextView
+        android:id="@+id/eventCardEventDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        tools:text="20.07.2024"
+        android:textColor="@color/white"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@+id/eventCardDateHeaderTextView"
+        app:layout_constraintTop_toTopOf="@+id/eventCardDateHeaderTextView" />
+
+    <TextView
+        android:id="@+id/eventCardEventStatusTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/eventCardDateHeaderTextView"
+        tools:text="Статус события" />
+
+    <TextView
+        android:id="@+id/eventCardForecastHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Прогноз"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/eventCardEventDateTextView"
+        app:layout_constraintTop_toTopOf="@+id/eventCardEventDateTextView" />
+
+    <ImageView
+        android:id="@+id/eventCardForecastImageImageView"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/cloud_icon"
+        app:layout_constraintEnd_toEndOf="@+id/eventCardForecastHeaderTextView"
+        app:layout_constraintStart_toStartOf="@+id/eventCardForecastHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/eventCardForecastHeaderTextView" />
+
+    <TextView
+        android:id="@+id/eventCardForecastConditionsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/eventCardForecastImageImageView"
+        app:layout_constraintStart_toStartOf="@+id/eventCardForecastImageImageView"
+        app:layout_constraintTop_toBottomOf="@+id/eventCardForecastImageImageView"
+        tools:text="+15 C облачно" />
+
+    <TextView
+        android:id="@+id/eventCardLocationHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Место:"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/eventCardTimeHeaderTextView"
+        app:layout_constraintTop_toBottomOf="@+id/eventCardTimeHeaderTextView" />
+
+    <TextView
+        android:id="@+id/eventCardLocationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginStart="4dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/eventCardLocationHeaderTextView"
+        app:layout_constraintTop_toTopOf="@+id/eventCardLocationHeaderTextView"
+        tools:text="Санкт-Петербург, \n Парголово" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

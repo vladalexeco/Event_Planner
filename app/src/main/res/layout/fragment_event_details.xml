@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".presentation.fragments.EventDetailsFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/mildGreen">
+
+        <ImageView
+            android:id="@+id/eventDetailsBackArrowImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/arrow_left"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical"
+            app:tint="@color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/event_details_screen_header"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="44dp"
+            android:textSize="20sp"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textSize="24sp"
+        android:text="@string/event_naming"/>
+
+    <TextView
+        android:id="@+id/eventDetailsEventNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="День рождения коллеги"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/date_of_event"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/eventDetailsDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="19.07.2024"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/time_of_event"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/eventDetailsTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="16:45"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/description_of_event"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/eventDetailsDescriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Юбилей. Купить хороший подарок"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/location_header"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/eventDetailsLocationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Москва"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/forecast_header_detail_screen"
+        android:textSize="24sp"/>
+
+    <ImageView
+        android:id="@+id/eventDetailsForecastImageImageView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@null"
+        android:src="@drawable/cloud_icon"/>
+
+    <TextView
+        android:id="@+id/eventDetailsForecastConditionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        tools:text="+15 C Пасмурно"
+        android:textSize="18sp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/eventDetailsApproveButton"
+        android:layout_width="match_parent"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/mildGreen"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/ok_button"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/eventDetailsEditButton"
+        android:layout_width="match_parent"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/skyBlue"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/edit_button"/>
+
+</LinearLayout>
