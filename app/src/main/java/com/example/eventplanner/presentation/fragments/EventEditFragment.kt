@@ -74,6 +74,10 @@ class EventEditFragment : Fragment() {
             showDatePickerDialogForSettingDate()
         }
 
+        binding.eventEditBackArrowImageView.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.eventEditEditTimeTextView.setOnClickListener {
             showTimePickerDialogForSettingTime()
         }

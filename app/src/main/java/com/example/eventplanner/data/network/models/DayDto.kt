@@ -1,30 +1,39 @@
 package com.example.eventplanner.data.network.models
 
 import com.example.eventplanner.domain.models.submodels.Day
+import com.google.gson.annotations.SerializedName
 
 data class DayDto(
-    val maxtemp_c: Double,
-    val mintemp_c: Double,
-    val avgtemp_c: Double,
-    val maxwind_kph: Double,
-    val avgvis_km: Double,
-    val avghumidity: Int,
-    val daily_chance_of_rain: Int,
-    val daily_chance_of_snow: Int,
+    @SerializedName("maxtemp_c")
+    val maxTempC: Double,
+    @SerializedName("mintemp_c")
+    val minTempC: Double,
+    @SerializedName("avgtemp_c")
+    val avgTempC: Double,
+    @SerializedName("maxwind_kph")
+    val maxWindKph: Double,
+    @SerializedName("avgvis_km")
+    val avgVisKm: Double,
+    @SerializedName("avghumidity")
+    val avgHumidity: Int,
+    @SerializedName("daily_chance_of_rain")
+    val dailyChanceOfRain: Int,
+    @SerializedName("daily_chance_of_snow")
+    val dailyChanceOfSnow: Int,
     val condition: ConditionDto,
     val uv: Int
 )
 
 fun DayDto.toDay(): Day {
     return Day(
-        maxTempC = this.maxtemp_c,
-        minTempC = this.mintemp_c,
-        avgTempC = this.avgtemp_c,
-        maxWindKph = this.maxwind_kph,
-        avgVisKm = this.avgvis_km,
-        avgHumidity = this.avghumidity,
-        dailyChanceOfRain = this.daily_chance_of_rain,
-        dailyChanceOfSnow = this.daily_chance_of_snow,
+        maxTempC = this.maxTempC,
+        minTempC = this.minTempC,
+        avgTempC = this.avgTempC,
+        maxWindKph = this.maxWindKph,
+        avgVisKm = this.avgVisKm,
+        avgHumidity = this.avgHumidity,
+        dailyChanceOfRain = this.dailyChanceOfRain,
+        dailyChanceOfSnow = this.dailyChanceOfSnow,
         condition = this.condition.toCondition(),
         uv = this.uv
     )

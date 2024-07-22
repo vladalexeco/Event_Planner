@@ -26,4 +26,10 @@
     <string name="error_date_time_parsing">Ошибка в формате даты/времени</string>
     <string name="location_header">Место события</string>
     <string name="unknown_forecast">Прогноз погоды неизвестен</string>
+    <string name="event_details_screen_header">Детали события</string>
+    <string name="forecast_header_detail_screen">Прогноз погоды</string>
+    <string name="ok_button">OK</string>
+    <string name="edit_button">Редактировать</string>
+    <string name="event_place_edit_screen_header">Место встречи</string>
+    <string name="event_place_hint_edit_screen">Введите место встречи</string>
 </resources>

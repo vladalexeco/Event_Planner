@@ -60,6 +60,10 @@ class EventDetailsFragment : Fragment() {
             findNavController().navigate(R.id.action_eventDetailsFragment_to_eventListFragment)
         }
 
+        binding.eventDetailsBackArrowImageView.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.eventDetailsEditButton.setOnClickListener {
             val bundle = Bundle()
             bundle.putString(EVENT_ID_KEY, eventId)

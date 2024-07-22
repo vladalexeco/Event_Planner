@@ -13,13 +13,23 @@
         android:layout_height="56dp"
         android:background="@color/mildGreen">
 
+        <ImageView
+            android:id="@+id/eventDetailsBackArrowImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/arrow_left"
+            android:layout_marginStart="8dp"
+            android:layout_gravity="center_vertical"
+            app:tint="@color/white"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Детали события"
+            android:text="@string/event_details_screen_header"
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="44dp"
             android:textSize="20sp"/>
 
     </FrameLayout>
@@ -49,7 +59,7 @@
         android:id="@+id/eventDetailsDateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="19.07.2024"
+        tools:text="19.07.2024"
         android:textSize="18sp"/>
 
     <TextView
@@ -63,7 +73,7 @@
         android:id="@+id/eventDetailsTimeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="16:45"
+        tools:text="16:45"
         android:textSize="18sp"/>
 
     <TextView
@@ -91,14 +101,14 @@
         android:id="@+id/eventDetailsLocationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Москва"
+        tools:text="Москва"
         android:textSize="18sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Прогноз погоды"
+        android:text="@string/forecast_header_detail_screen"
         android:textSize="24sp"/>
 
     <ImageView
@@ -130,7 +140,7 @@
         android:backgroundTint="@color/mildGreen"
         android:layout_height="56dp"
         android:layout_marginHorizontal="16dp"
-        android:text="OK"/>
+        android:text="@string/ok_button"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/eventDetailsEditButton"
@@ -141,6 +151,6 @@
         android:layout_height="56dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Редактировать"/>
+        android:text="@string/edit_button"/>
 
 </LinearLayout>
